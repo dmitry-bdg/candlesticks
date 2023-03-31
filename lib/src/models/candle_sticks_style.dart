@@ -88,7 +88,7 @@ class CandleSticksStyle {
   }) {
     return CandleSticksStyle(
       borderColor: borderColor ?? Color(0xFF848E9C),
-      background: background ?? Color(0xFFFAFAFA),
+      background: background ?? Color.fromRGBO(27, 50, 49, 1),
       primaryBull: primaryBull ?? Color(0xFF026A69A),
       secondaryBull: secondaryBull ?? Color(0xFF8CCCC6),
       primaryBear: primaryBear ?? Color(0xFFEF5350),
