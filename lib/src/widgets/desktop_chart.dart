@@ -167,6 +167,7 @@ class _DesktopChartState extends State<DesktopChart> {
                             0),
                         widget.candles.length - 1)];
                 return Container(
+                  // padding: EdgeInsets.all(5),
                   color: widget.style.background,
                   child: Stack(
                     children: [
@@ -467,7 +468,7 @@ class _DesktopChartState extends State<DesktopChart> {
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             padding: EdgeInsets.zero,
-                            primary: widget.style.hoverIndicatorBackgroundColor,
+                            backgroundColor: widget.style.hoverIndicatorBackgroundColor,
                           ),
                           child: Text(
                             "Auto",

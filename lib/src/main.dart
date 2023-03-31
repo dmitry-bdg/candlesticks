@@ -57,8 +57,7 @@ class Candlesticks extends StatefulWidget {
     this.indicators,
     this.onRemoveIndicator,
     this.style,
-  })  : assert(candles.length == 0 || candles.length > 1,
-            "Please provide at least 2 candles"),
+  })  : assert(candles.length == 0 || candles.length > 1, "Please provide at least 2 candles"),
         super(key: key);
 
   @override
@@ -88,8 +87,7 @@ class _CandlesticksState extends State<Candlesticks> {
       return;
     }
     if (mainWindowDataContainer == null) {
-      mainWindowDataContainer =
-          MainWindowDataContainer(widget.indicators ?? [], widget.candles);
+      mainWindowDataContainer = MainWindowDataContainer(widget.indicators ?? [], widget.candles);
     }
   }
 
@@ -100,8 +98,7 @@ class _CandlesticksState extends State<Candlesticks> {
       return;
     }
     if (mainWindowDataContainer == null) {
-      mainWindowDataContainer =
-          MainWindowDataContainer(widget.indicators ?? [], widget.candles);
+      mainWindowDataContainer = MainWindowDataContainer(widget.indicators ?? [], widget.candles);
     } else {
       final currentIndicators = widget.indicators ?? [];
       final oldIndicators = oldWidget.indicators ?? [];
@@ -131,42 +128,42 @@ class _CandlesticksState extends State<Candlesticks> {
 
   @override
   Widget build(BuildContext context) {
-    final style = widget.style ??
-        (Theme.of(context).brightness == Brightness.dark
-            ? CandleSticksStyle.dark()
-            : CandleSticksStyle.light());
+    final style = widget.style ?? CandleSticksStyle.style();
     return Column(
       children: [
         if (widget.displayZoomActions == true || widget.actions.isNotEmpty) ...[
           ToolBar(
             color: style.toolBarColor,
             children: [
-              if (widget.displayZoomActions) ...[
-                ToolBarAction(
-                  onPressed: () {
-                    setState(() {
-                      candleWidth -= 2;
-                      candleWidth = max(candleWidth, 2);
-                    });
-                  },
-                  child: Icon(
-                    Icons.remove,
-                    color: style.borderColor,
-                  ),
+              if (widget.displayZoomActions)
+                Row(
+                  children: [
+                    ToolBarAction(
+                      onPressed: () {
+                        setState(() {
+                          candleWidth -= 2;
+                          candleWidth = max(candleWidth, 2);
+                        });
+                      },
+                      child: Icon(
+                        Icons.remove,
+                        color: style.borderColor,
+                      ),
+                    ),
+                    ToolBarAction(
+                      onPressed: () {
+                        setState(() {
+                          candleWidth += 2;
+                          candleWidth = min(candleWidth, 20);
+                        });
+                      },
+                      child: Icon(
+                        Icons.add,
+                        color: style.borderColor,
+                      ),
+                    ),
+                  ],
                 ),
-                ToolBarAction(
-                  onPressed: () {
-                    setState(() {
-                      candleWidth += 2;
-                      candleWidth = min(candleWidth, 20);
-                    });
-                  },
-                  child: Icon(
-                    Icons.add,
-                    color: style.borderColor,
-                  ),
-                ),
-              ],
               ...widget.actions
             ],
           ),
@@ -174,8 +171,7 @@ class _CandlesticksState extends State<Candlesticks> {
         if (widget.candles.length == 0 || mainWindowDataContainer == null)
           Expanded(
             child: Center(
-              child: widget.loadingWidget ??
-                  CircularProgressIndicator(color: style.loadingColor),
+              child: widget.loadingWidget ?? CircularProgressIndicator(color: style.loadingColor),
             ),
           )
         else
@@ -184,10 +180,7 @@ class _CandlesticksState extends State<Candlesticks> {
               tween: Tween(begin: 6.toDouble(), end: candleWidth),
               duration: Duration(milliseconds: 120),
               builder: (_, double width, __) {
-                if (kIsWeb ||
-                    Platform.isMacOS ||
-                    Platform.isWindows ||
-                    Platform.isLinux) {
+                if (kIsWeb || Platform.isMacOS || Platform.isWindows || Platform.isLinux) {
                   return DesktopChart(
                     style: style,
                     onRemoveIndicator: widget.onRemoveIndicator,
@@ -218,8 +211,7 @@ class _CandlesticksState extends State<Candlesticks> {
                       lastIndex = index;
                     },
                     onReachEnd: () {
-                      if (isCallingLoadMore == false &&
-                          widget.onLoadMoreCandles != null) {
+                      if (isCallingLoadMore == false && widget.onLoadMoreCandles != null) {
                         isCallingLoadMore = true;
                         widget.onLoadMoreCandles!().then((_) {
                           isCallingLoadMore = false;
@@ -261,8 +253,7 @@ class _CandlesticksState extends State<Candlesticks> {
                       lastIndex = index;
                     },
                     onReachEnd: () {
-                      if (isCallingLoadMore == false &&
-                          widget.onLoadMoreCandles != null) {
+                      if (isCallingLoadMore == false && widget.onLoadMoreCandles != null) {
                         isCallingLoadMore = true;
                         widget.onLoadMoreCandles!().then((_) {
                           isCallingLoadMore = false;

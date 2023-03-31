@@ -24,6 +24,8 @@ class ToolBarAction extends StatelessWidget {
         elevation: 0,
         fillColor: color,
         onPressed: onPressed,
+        mouseCursor: SystemMouseCursors.click,
+        shape: Border.all(color: Colors.black26),
         child: Center(child: child),
       ),
     );

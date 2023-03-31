@@ -10,10 +10,14 @@ class ToolBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: color,
+      decoration: BoxDecoration(
+          color: color,
+          border: Border(bottom: BorderSide(color: Colors.white))
+      ),
       child: Padding(
-        padding: const EdgeInsets.all(2.0),
+        padding: const EdgeInsets.only(right: 2.0, left: 2.0, top: 5, bottom: 10),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: children,
         ),
       ),
