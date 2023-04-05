@@ -17,16 +17,19 @@ class ToolBarAction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: width,
-      height: 30,
-      child: RawMaterialButton(
-        elevation: 0,
-        fillColor: color,
-        onPressed: onPressed,
-        mouseCursor: SystemMouseCursors.click,
-        shape: Border.all(color: Colors.black26),
-        child: Center(child: child),
+    return Padding(
+      padding: EdgeInsets.only(right: 5, left: 1),
+      child: SizedBox(
+        width: width,
+        height: 30,
+        child: RawMaterialButton(
+          elevation: 0,
+          fillColor: color,
+          onPressed: onPressed,
+          mouseCursor: SystemMouseCursors.click,
+          shape: Border.all(color: Colors.black26),
+          child: Center(child: child),
+        ),
       ),
     );
   }
