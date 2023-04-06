@@ -36,8 +36,10 @@ class _TopPanelState extends State<TopPanel> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            height: 20,
+          Container(
+            decoration: BoxDecoration(color: widget.style.background.withOpacity(.8)),
+            padding: EdgeInsets.all(5),
+            height: 25,
             child: widget.currentCandle != null
                 ? CandleInfoText(
                     candle: widget.currentCandle!,
