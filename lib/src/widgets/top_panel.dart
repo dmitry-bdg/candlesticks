@@ -40,7 +40,7 @@ class _TopPanelState extends State<TopPanel> {
             decoration: widget.currentCandle != null
                 ? BoxDecoration(
                     color: widget.style.hoverIndicatorBackgroundColor.withOpacity(.6),
-                    borderRadius: BorderRadius.circular(6),
+                    borderRadius: BorderRadius.circular(5),
                   )
                 : BoxDecoration(),
             padding: EdgeInsets.all(5),
