@@ -37,7 +37,9 @@ class _TopPanelState extends State<TopPanel> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            decoration: BoxDecoration(color: widget.style.background.withOpacity(.8)),
+            decoration: BoxDecoration(
+                color: widget.style.hoverIndicatorBackgroundColor.withOpacity(.7),
+            ),
             padding: EdgeInsets.all(5),
             height: 25,
             child: widget.currentCandle != null
