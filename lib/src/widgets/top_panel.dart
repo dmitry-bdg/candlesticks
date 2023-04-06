@@ -38,7 +38,10 @@ class _TopPanelState extends State<TopPanel> {
         children: [
           Container(
             decoration: widget.currentCandle != null
-                ? BoxDecoration(color: widget.style.hoverIndicatorBackgroundColor.withOpacity(.7))
+                ? BoxDecoration(
+                    color: widget.style.hoverIndicatorBackgroundColor.withOpacity(.6),
+                    borderRadius: BorderRadius.circular(6),
+                  )
                 : BoxDecoration(),
             padding: EdgeInsets.all(5),
             height: 25,
