@@ -44,7 +44,6 @@ class _TopPanelState extends State<TopPanel> {
                   )
                 : BoxDecoration(),
             padding: EdgeInsets.all(5),
-            height: 25,
             child: widget.currentCandle != null
                 ? CandleInfoText(
                     candle: widget.currentCandle!,
