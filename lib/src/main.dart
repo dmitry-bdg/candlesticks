@@ -1,12 +1,13 @@
+import 'dart:io' show Platform;
 import 'dart:math';
+
 import 'package:candlesticks/candlesticks.dart';
 import 'package:candlesticks/src/models/main_window_indicator.dart';
-import 'package:candlesticks/src/widgets/mobile_chart.dart';
 import 'package:candlesticks/src/widgets/desktop_chart.dart';
+import 'package:candlesticks/src/widgets/mobile_chart.dart';
 import 'package:candlesticks/src/widgets/toolbar.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'dart:io' show Platform;
 
 enum ChartAdjust {
   /// Will adjust chart size by max and min value from visible area
@@ -67,9 +68,9 @@ class Candlesticks extends StatefulWidget {
 class _CandlesticksState extends State<Candlesticks> {
   /// index of the newest candle to be displayed
   /// changes when user scrolls along the chart
-  int index = -10;
+  int index = -1;
   double lastX = 0;
-  int lastIndex = -10;
+  int lastIndex = -1;
 
   /// candleWidth controls the width of the single candles.
   ///  range: [2...10]
@@ -107,21 +108,18 @@ class _CandlesticksState extends State<Candlesticks> {
           if (currentIndicators[i] == oldIndicators[i]) {
             continue;
           } else {
-            mainWindowDataContainer = MainWindowDataContainer(
-                widget.indicators ?? [], widget.candles);
+            mainWindowDataContainer = MainWindowDataContainer(widget.indicators ?? [], widget.candles);
             return;
           }
         }
       } else {
-        mainWindowDataContainer =
-            MainWindowDataContainer(widget.indicators ?? [], widget.candles);
+        mainWindowDataContainer = MainWindowDataContainer(widget.indicators ?? [], widget.candles);
         return;
       }
       try {
         mainWindowDataContainer!.tickUpdate(widget.candles);
       } catch (_) {
-        mainWindowDataContainer =
-            MainWindowDataContainer(widget.indicators ?? [], widget.candles);
+        mainWindowDataContainer = MainWindowDataContainer(widget.indicators ?? [], widget.candles);
       }
     }
   }
